@@ -1,7 +1,6 @@
 ### CREATED BY GUSBELL ###
 
-import discord
-import os, asyncio, random
+import discord, os, asyncio, random
 
 from pathlib import Path
 from dotenv import load_dotenv
@@ -18,13 +17,15 @@ client = discord.Client()
 
 ##### --- Bot Static Function --- #####
 
-    # Nothing to be added here, yet #
+# Nothing to be added here, yet #
 
 ##### --- End of Bot Function --- #####
+
 
 @client.event
 async def on_ready():
     print('Euler has logged in as {0.user}!'.format(client))
+
 
 @client.event
 async def on_message(message):
@@ -44,33 +45,36 @@ async def on_message(message):
 ### Real miracle begin here ###
 
     if m.startswith('$Generate 1'):
-        t = await message.channel.send(file=discord.File(random.choice(Problems.Beginner), spoiler=True))
+        t = await message.channel.send(file=discord.File(random.choice(Problems.Beginner)))
         await asyncio.sleep(1)
         await message.delete()
         await asyncio.sleep(30)
         await t.delete()
     elif m.startswith('$Generate 2'):
-        t = await message.channel.send(file=discord.File(random.choice(Problems.Intermediate), spoiler=True))
+        t = await message.channel.send(file=discord.File(random.choice(Problems.Intermediate)))
         await asyncio.sleep(1)
         await message.delete()
         await asyncio.sleep(30)
         await t.delete()
     elif m.startswith('$Generate 3'):
-        t =await message.channel.send(file=discord.File(random.choice(Problems.Expert), spoiler=True))
+        t = await message.channel.send(file=discord.File(random.choice(Problems.Expert)))
         await asyncio.sleep(1)
         await message.delete()
         await asyncio.sleep(30)
         await t.delete()
     elif m.startswith('$Generate 4'):
-        t = await message.channel.send(file=discord.File(random.choice(Problems.Master), spoiler=True))
+        t = await message.channel.send(file=discord.File(random.choice(Problems.Master)))
         await asyncio.sleep(1)
         await message.delete()
         await asyncio.sleep(30)
         await t.delete()
     elif m.startswith('$Generate'):
-        await message.channel.send('Usage : ```$Generate [difficulty]```')
+        p1 = await message.channel.send('Usage : ```$Generate [difficulty]```')
         await asyncio.sleep(1)
-        await message.channel.send('List of difficulty : ```1 Beginner, 2 Intermeiate , 3 Expert , 4 Master```')
+        p2 = await message.channel.send('List of difficulty : ```1 Beginner, 2 Intermeiate , 3 Expert , 4 Master```')
+        await asyncio.sleep(10)
+        await p1.delete()
+        await p2.delete()
 
 ###############################
 
