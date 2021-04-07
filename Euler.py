@@ -44,17 +44,33 @@ async def on_message(message):
 ### Real miracle begin here ###
 
     if m.startswith('$Generate 1'):
-        return await message.channel.send(file=discord.File(random.choice(Problems.Beginner), spoiler=True))
+        t = await message.channel.send(file=discord.File(random.choice(Problems.Beginner), spoiler=True))
+        await asyncio.sleep(1)
+        await message.delete()
+        await asyncio.sleep(30)
+        await t.delete()
     elif m.startswith('$Generate 2'):
-        return await message.channel.send(file=discord.File(random.choice(Problems.Intermediate), spoiler=True))
+        t = await message.channel.send(file=discord.File(random.choice(Problems.Intermediate), spoiler=True))
+        await asyncio.sleep(1)
+        await message.delete()
+        await asyncio.sleep(30)
+        await t.delete()
     elif m.startswith('$Generate 3'):
-        return await message.channel.send(file=discord.File(random.choice(Problems.Expert), spoiler=True))
+        t =await message.channel.send(file=discord.File(random.choice(Problems.Expert), spoiler=True))
+        await asyncio.sleep(1)
+        await message.delete()
+        await asyncio.sleep(30)
+        await t.delete()
     elif m.startswith('$Generate 4'):
-        return await message.channel.send(file=discord.File(random.choice(Problems.Master), spoiler=True))
+        t = await message.channel.send(file=discord.File(random.choice(Problems.Master), spoiler=True))
+        await asyncio.sleep(1)
+        await message.delete()
+        await asyncio.sleep(30)
+        await t.delete()
     elif m.startswith('$Generate'):
         await message.channel.send('Usage : ```$Generate [difficulty]```')
-        asyncio.sleep(1)
-        await message.channel.send('List of difficulty : ```1 Beginner, 2 Intermediate , 3 Expert , 4 Master```')
+        await asyncio.sleep(1)
+        await message.channel.send('List of difficulty : ```1 Beginner, 2 Intermeiate , 3 Expert , 4 Master```')
 
 ###############################
 
