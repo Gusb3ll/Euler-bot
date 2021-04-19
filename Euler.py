@@ -15,17 +15,13 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 
 client = discord.Client()
 
-##### --- Bot Static Function --- #####
+##### --- Bot Static & Function --- #####
 
-# Nothing to be added here, yet #
-
-##### --- End of Bot Function --- #####
-
+###### --- End of Bot Function --- ######
 
 @client.event
 async def on_ready():
     print('Euler has logged in as {0.user}!'.format(client))
-
 
 @client.event
 async def on_message(message):
@@ -44,7 +40,7 @@ async def on_message(message):
 
 ### Real miracle begin here ###
 
-    if m.startswith('$Generate 1'):
+    if m.startswith('$Generate 1'): 
         t = await message.channel.send(file=discord.File(random.choice(Problems.Beginner)))
         await asyncio.sleep(1)
         await message.delete()
@@ -76,6 +72,22 @@ async def on_message(message):
         await p1.delete()
         await p2.delete()
 
+########## Test stuff #########
+
+    if m.startswith('$test'):
+        p = await message.channel.send('Rendering...')
+        await asyncio.sleep(5)
+        #!#INSERT LATEX FUNCTION#!#
+        await asyncio.sleep(1)
+        await p.delete()
+
+    if m.startswith('$meme'):
+        t = await message.channel.send(file=discord.File(random.choice(Problems.Meme)))
+        await asyncio.sleep(1)
+        await message.delete()
+        await asyncio.sleep(60)
+        await t.delete()
+
 ###############################
 
     if any(word in m for word in Commands.Shutdown):
@@ -83,6 +95,6 @@ async def on_message(message):
             await message.channel.send('Shutting down...')
             await client.logout()
         else:
-            await message.channel.send('You have no permission to perform this action.')
+            await message.channel.send("You don't have permission to perform this action.")
 
 client.run(TOKEN)
