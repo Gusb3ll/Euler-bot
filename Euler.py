@@ -162,6 +162,7 @@ async def on_message(message):
         await asyncio.sleep(1)
         p3 = await message.channel.send('List of difficulty : ```1 Easy, 2 Normal , 3 Hard```')
         await asyncio.sleep(20)
+        await message.delete()
         await p1.delete()
         await p2.delete()
         await p3.delete()
