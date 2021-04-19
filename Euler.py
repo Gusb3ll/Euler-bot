@@ -33,15 +33,15 @@ async def on_message(message):
     if any(word in m for word in Commands.Help):
         t = await message.channel.send('Available commands : ```$Help, $Generate, $Info```')
         await message.delete()
-        asyncio.sleep(20)
+        await asyncio.sleep(20)
         await t.delete()
 
     if any(word in m for word in Commands.Info):
         p1 = await message.channel.send('Created by Gusbell for POSN discord channel,')
         await message.delete()
-        asyncio.sleep(1)
+        await asyncio.sleep(1)
         p2 = await message.channel.send('further information please visit https://github.com/Gusb3ll/Euler-bot')
-        asyncio.sleep(20)
+        await asyncio.sleep(20)
         await p1.delete()
         await p2.delete()
 
