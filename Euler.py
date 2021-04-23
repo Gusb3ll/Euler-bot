@@ -23,6 +23,8 @@ client = discord.Client()
 
 @client.event
 async def on_ready():
+    activity = discord.Game(name="$Help | In Development", type=3)
+    await client.change_presence(status=discord.Status.online, activity=activity)
     print('Euler has logged in as {0.user}!'.format(client))
     print('Discord.py version : ' + discord.__version__)
 
@@ -164,11 +166,11 @@ async def on_message(message):
             await asyncio.sleep(5)
             await message.delete()
             await t.delete()
-            await asyncio.sleep(1)
+            await asyncio.sleep(.1)
             await client.logout()
         else:
             t = await message.channel.send("You don't have permission to perform this action.")
-            await asyncio.sleep(10)
+            await asyncio.sleep(5)
             await message.delete()
             await t.delete()
 
